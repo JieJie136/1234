@@ -1,1 +1,1 @@
-print("weeeee")
+print("hello")
