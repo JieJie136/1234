@@ -7,5 +7,5 @@ elif (int(input("猜错了，再猜一次:"))) == num1:
     print("最后一次猜对了")
 else:
     print("都猜错了")
-    print("test")
 
+    print("hello world")
