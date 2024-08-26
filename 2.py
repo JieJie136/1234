@@ -25,4 +25,7 @@ message = "北京%s, 工资%s" % (as,df)
 
 快速格式化：f"我是{}"快速格式化填充，不限数据类型，不控制精度
 表达式也可以直接格式化：print("1 * 1 = %d" % (1 * 1)) \print(f"1 * 2 = {1 * 2}")
+简单print("每日增长系数是: %.1f, 经过%d天的增长后, 股价到达了%5.2f" % (stock_price_daily_growth_factor,
+                            growth_days, stock_price * stock_price_daily_growth_factor ** growth_days)),这里要记住
+inut()输入数据，input("aaaaa")可以提前打印一点信息,默认输入的都是字符串，使用时候自行转换数据类型
 """
