@@ -144,10 +144,34 @@ while i < len(str1):
 统计集合元素数量：len(set),统计的是去重后的数量
 集合遍历：不支持下标索引，所以不能用while循环。但是可以用for循环。
 
-字典：存储的元素是一个个的键值对。
+字典：存储的元素是一个个的键值对。不支持下标索引,不能用while循环
 dict1 = {key:value, key:value, ..., key:value}
 空字典，dict1 = {}或者dict2 = dict()
 字典的key是不允许重复的,不可以使用下标索引，可以通过Key值来获取对应的value,new = dict1["树懒"]
 字典可以嵌套，但是嵌套中key不能为字典，可以为其他的列表、元组、字符串等；value没有限制，可以是字典也可以是其他
 嵌套字典：new = stu_dict["李杰"]["数学"]
+字典的新增和更新:dict1["zhou"] = 99,zhou不存在的话就是新增，存在就是更改。
+删除：score = dict.pop("zhou")
+清空所有元素：dict1.clear()
+获取全部的key：dict.keys()
+遍历字典：通过上面获取到全部的key来完成遍历或者直接对字典进行for循环，每次循环直接得key。不能用while循环
+统计字典里面的元素：len（dict1）
+
+数据容器通用操作：都可以用for循环遍历
+max：查找最大元素
+min：查找最小元素
+len：计算元素个数
+list():转为列表
+tuple():转为元组
+str():转为字符串
+set():装维集合
+sorted(容器，[reverse = True])：正向排序。如果要倒序，就加上reverse = True
+
+字符串比较：主要比较其对应的码值。ASCII码值，A = 65, a = 97.
+按位比较，一位大整体就大
+
+函数多返回值：用一个return后面接多个结果
+然后调用时候x, y, z = return()
+函数传参的4种方式：
+1位置参数：
 """

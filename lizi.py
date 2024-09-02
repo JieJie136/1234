@@ -1,21 +1,13 @@
-stu_dict = {
-    "李杰": {
-        "数学": 99,
-        "语文": 100,
-        "英语": 100,
-    },
-    "树懒": {
-        "语文": 88,
-        "数学": 99,
-        "英语": 100,
-    },
-    "珠海站": {
-        "语文": 88,
-        "数学": 55,
-        "英语": 55,
-    }
-}
-print(f"学生的考试信息是{stu_dict}")
+import time
+f = open("D:\Program Files\Python\测试.txt", "r", encoding="UTF-8")
+print(type(f))
+# print(f"读取10字节的结果:{f.read(10)}")
+# print(f"{f.read()}")
 
-ads = stu_dict["树懒"]["数学"]
-print(f"树懒的数学成绩是{ads}")
+for line in f:
+    print(f"{line}")
+
+with open("D:\Program Files\Python\测试.txt") as f:
+    f.readlins()
+    for line in f:
+        print(f"{line}")
