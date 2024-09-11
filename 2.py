@@ -170,8 +170,195 @@ sorted(容器，[reverse = True])：正向排序。如果要倒序，就加上re
 字符串比较：主要比较其对应的码值。ASCII码值，A = 65, a = 97.
 按位比较，一位大整体就大
 
-函数多返回值：用一个return后面接多个结果
-然后调用时候x, y, z = return()
+函数多返回值：用一个return后面接多个结果return 1， 2
+然后调用时候x, y, z = return(),第一个变量接收第一个值，一一对应
 函数传参的4种方式：
-1位置参数：
+位置参数：一一对应传参，位置要对应齐
+关键字传参：通过键=值，位置可以无序堆放。
+位置参数与关键字参数混用时候，位置参数必须在前，多个位置参数还需要一一对应。
+缺省参数：函数定义时候设置了默认参数，调用时候没有设置参数救用默认的。调用时候设置了参数，相当于修改了.
+如果设置了默认值，必须在最后，不能在前面。
+不定长参数：1位置参数不定长：参数用*args，数量不受限，都接收。所有参数会整合成一个元组。
+          2关键字参数不定长：参数用**kwargs。数量不受限，但是要传入”键=值“形式，所有键值组成一个字典name = 'xiaowang'
+函数作为参数传递：传入的是执行逻辑。把qwer的计算逻辑传入uio函数中。
+def uio(qwer):
+    result = qwer(1, 2)
+    print(result)
+def qwer(x, y):
+    return x + y
+uio(qwer)
+
+lambda函数：定义匿名函数。只能写一行.uio(lambda x, y: x + y)
+有名称的函数可以重复调用，匿名函数只能用一次。
+函数体要写多行，还是def定义函数。
+
+文件编码：主要用UTF-8编码操作。
+文件读取操作：打开文件。open
+文件两个read，后面read会接着前一个read的内容读取。
+清华大学镜像：https://pypi.tuna.tsinghua.edu.cn/simple
+ab173是一个json格式数据处理网站
+
+类
+定义：用class定义类。
+class stu:   设计表格
+    name = None
+    gender = None
+    age = None
+qwe = stu()  打印表格
+qwe.name = "lijie"   填写表格
+qwe.gender = "man"
+qwe.age = 20
+print(qwe.name)
+print(qwe.gender)
+print(qwe.age)
+
+类的具体定义和使用：属性（变量）、行为（类里面的函数）
+方法：定义在类里面的函数。
+class 类名称:
+    成员变量
+def 方法名（self，形参。。。。）
+    方法体
+对象 = 类名称（）
+
+class stu:     通过self访问类内部成员变量。
+    name = None
+
+    def sayhi(self):
+        print(f"大家好，我是{self.name}, 多多关照")
+
+qwe = stu()
+qwe.name = "周杰伦"
+qwe.sayhi()
+
+
+class stu:这里多了msg，也就是调用时候自己写是东西，是给msg的，会更丰富。
+    name = None
+
+    def sayhi(self):
+        print(f"大家好，我是{self.name}, 多多关照")
+    def sayhi1(self, msg):
+        print(f"大家好，我是{self.name}, {msg}")
+
+qwe = stu()
+qwe.name = "周杰伦"
+qwe.sayhi1("哎呦不错啊")
+
+qwe1 = stu()
+qwe1.name = "周杰"
+qwe1.sayhi1("我很欣赏你")
+
+面向对象编程：定义类之后，创建对象来完成具体工作。
+class clock:
+    id = None
+    price = None
+
+    def ring(self):
+        import winsound
+        winsound.Beep(2000, 3000)
+qwe = clock()
+qwe.id = "1234560"
+qwe.price = 20.2
+print(f"闹钟的ID是{qwe.id}, 价格是{qwe.price}")
+qwe.ring()
+
+构造方法：__init__()
+创建类对象时候，会自动执行，如果括号里面有数据，会自动传参给__init__方法使用。
+class stu:
+    name = None.如果这里不写的话，放到下面方法中也是可以的，就相当于先声明再赋值
+    age = None
+    tel = None
+    def __init__(self, qwe, rty, uio):
+        self.name = qwe。一定要记得调用赋值给类内部变量时候，要用self
+        self.age = rty
+        self.tel = uio
+    print("stu类开始行动")
+asd = stu("李杰", 24, "123456789")
+print(asd.name)
+print(asd.age)
+print(asd.tel)
+
+魔术方法：也就是python中的内置方法！！！
+__init__构造方法
+__str__字符串方法:
+class stu:
+    def __init__(self, qwe, rty):
+        self.name = qwe
+        self.age = rty
+    # def __str__(self):
+    #     return(f"{self.name}, {self.age}")
+asd = stu("周杰伦", 32)
+print(asd)
+# print(str(asd))
+如果没使用str方法，打印类对象是其内存地址，一般没啥用，用字符串方法，就会变成你的内容输出
+
+__lt__()小于符号的比较方法
+class stu:
+    def __init__(self, qwe, rty):
+        self.name = qwe
+        self.age = rty
+    def __lt__(self, uio):   不能直接用对象进行比较，要有lt构造方法进行比较。
+        return self.age < uio.age
+
+asd = stu("李杰", 36)
+zxc = stu("拉拉", 68)
+print(asd < zxc)
+print(asd > zxc)
+
+__le__()用于小于等于、大于等于两种比较运算符
+class stu:
+    def __init__(self, qwe, rty):
+        self.name = qwe
+        self.age = rty
+    def __le__(self, uio):
+        return self.age <= uio.age
+
+asd = stu("李杰", 36)
+zxc = stu("拉拉", 68)
+print(asd <= zxc)
+print(asd >= zxc)
+
+__eq__()比较运算符实现方法，主要判断是否相等。
+class stu:
+    def __init__(self, qwe, rty):
+        self.name = qwe
+        self.age = rty
+    def __eq__(self, uio):
+        return self.age == uio.age
+
+asd = stu("李杰", 32)
+zxc = stu("拉拉", 36)
+print(asd == zxc)
+
+面向对象：基于模板（类）创建实体（对象），使用对象完成功能开发。
+面向对象3大特性：封装、继承、多态。
+
+封装：将现实事物封装到类中成员变量和成员方法。
+私有成员变量：变量名开头加__。无法赋值，也无法获取数据。
+私有成员方法：变量名开头加__。无法直接被类对象使用
+class phone:
+    __current_voltage = None
+
+    def __keep(self):
+        print("让CPU以单核模式运行")
+qwe = phone()
+print(qwe.__keep).运行不了，这是错误的。
+
+私有成员无法被类对象使用，但是可以被类中其他成员使用。
+class phone:
+    __current_voltage = 2
+
+    def __keep(self):
+        print("让CPU以单核模式运行")
+    def call(self):    call方法中访问了类内部的私有成员方法。
+        if self.__current_voltage >= 1:
+            print("5g通话已开始")
+        else:
+            self.__keep()
+            print("单核开启")
+qwe = phone()
+qwe.call()
 """
+
+
+
+
