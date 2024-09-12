@@ -357,6 +357,176 @@ class phone:
             print("单核开启")
 qwe = phone()
 qwe.call()
+
+继承：一个类继承另外一个类的成员变量和成员方法。
+单继承：class phone(uio)
+多继承:class(uio, rty, qwe)
+多继承中，如果父类有同名方法或者属性，先继承的优先权高于后继承的。
+class Phone:
+    IMEI = None
+    producer = "HM"
+    def call_by_4g(self):
+        print("4g通话")
+class Phone2022:
+    face_id = "456132789"
+    def call_by_5g(self):
+        print("5g通话已经开启")
+class NFC:
+    nfctype = "第五代"
+    producer = "HM"
+    def read_card(self):
+        print("NFC读卡")
+    def writer_card(self):
+        print("NFC写入")
+class re:
+    re_type = "红外遥控"
+    def control(self):
+        print("红外遥控开启了")
+
+class Myphone(Phone, NFC, re):
+    pass
+
+phone = Myphone()
+phone.call_by_4g()
+phone.read_card()
+phone.writer_card()
+phone.control()
+
+复写父类：子类继承父类成员变量和成员方法后。可以在自己类体在重新修改
+class phone:
+    IMEI = None
+    producer = "ITCAST"
+
+    def call_by_back(self):
+        print("使用5g通话")
+class Myphone(phone):
+    producer = "QWERT"
+    def call_by_back(self):
+        print("开启单核模式")
+        print("使用5g通话")
+asd = Myphone()
+asd.call_by_back()
+print(asd.producer)
+
+调用父类：复写父类后，子类和父类就有一些相同的名字变量和方法。想调用以前父类的成员，如下
+父类名.成员变量
+父类名.成员方法（self）
+class phone:
+    IMEI = None
+    producer = "ITCAST"
+
+    def call_by_back(self):
+        print("使用5g通话")
+class Myphone(phone):
+    producer = "QWERT"
+    def call_by_back(self):
+        print("开启单核模式")
+        print(f"父类厂商是{phone.producer}")
+        phone.call_by_back(self)
+        print("使用6g通话")
+asd = Myphone()
+asd.call_by_back()
+print(asd.producer)
+
+super().成员变量
+super().成员方法（）
+class phone:
+    IMEI = None
+    producer = "ITCAST"
+
+    def call_by_back(self):
+        print("使用5g通话")
+class Myphone(phone):
+    producer = "QWERT"
+    def call_by_back(self):
+        print("开启单核模式")
+        print(f"父类厂商是{super().producer}")
+        super().call_by_back()   这里害不需要写self，很方便。
+        print("使用6g通话")
+asd = Myphone()
+asd.call_by_back()
+print(asd.producer)
+
+类型注解:变量：函数（方法）形参和返回值
+变量注解：变量：注解    var1: int = 10  定义的变量名：类型=给变量赋的值
+类对象注解：class student
+              pass
+          stu: student = student()
+容器注解：简易mylist: list = [1, 2, 3]
+详细   mylist: list[int] = [1, 2, 3]
+元组需要对每一个元素进行标记：mytuple = tuple[str, int, bool] = ("yui", 666, False)
+字典需要对键和值都要注解:mydict: dict[str, int] = {"yui": 444}
+也可以在注释中进行注解：#type: int
+var_1 = random.randint(1, 10)     #type: int(这里值得是变量var_1的类型)
+为变量设置注解，显示的变量定义，一般不需要注解。var1： int = 10
+一般在无法直接看出变量类型的时候，再回添加变量的类型注解
+
+函数（方法）的类型注解-形参注解.def 函数（方法）名（形参名:类型, 形参名：类型。。。。）
+def add(x: int, y: int):
+return x + y
+函数（方法）的返回值也可以添加类型注解
+def 函数（方法）名(形参： 类型， 形参： 类型。。。。。。） -> 返回值类型:
+    pass
+
+Union联合类型注解：导包 from typing import union
+Union[类型， 类型。。。].可以在字典、变量注解、函数（方法）形参和返回值注解中均可以使用
+from typing import Union
+
+mylist: list[Union[int, str]] = [1, 2, "fgyt", "sddff"]
+
+def func(data: Union[int, str]) ->Union[int, str]:
+    pass
+func()
+
+多态：使用不同对象会有不同状态
+class Animal:
+    def speak(self):
+        pass   这里就是抽象类，空实现，定义一个标准，让子类来具体实现方法
+class Dog(Animal):
+    def speak(self):
+        print("汪汪汪")
+class Cat(Animal):
+    def speak(self):
+        print("喵喵喵")
+def makenoise(animal: Animal):
+    animal.speak()
+dog = Dog()
+cat = Cat()
+makenoise(dog)
+makenoise(cat)
+
+class AC:   父类做顶层设计，定义一些抽象方法，子类具体来实现。
+    def cool_wind(self):
+        pass
+    def hot_wind(self):
+        pass
+    def swing(self):
+        pass
+class Midea(AC):
+    def cool_wind(self):
+        print("美的空调制冷")
+    def hot_wind(self):
+        print("美的空调制热")
+    def swing(self):
+        print("美的空调摆风")
+class Geli(AC):
+    def cool_wind(self):
+        print("格力空调制冷")
+    def hot_wind(self):
+        print("格力空调制热")
+    def swing(self):
+        print("格力空调摆风")
+
+def makecool(ac: AC):
+    ac.cool_wind()
+
+midea = Midea()
+gree = Geli()
+makecool(midea)
+makecool(gree)
+定义函数（方法）， 通过类型注解声明需要父类对象， 实际传入子类对象进行工作，获得不同工作状态。
+没有具体实现的方法称之为抽象方法（pass）
+抽象类一般做顶层设计，以便于子类做具体实现，要求子类必须复写父类一些方法。
 """
 
 
