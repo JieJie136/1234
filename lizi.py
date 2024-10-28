@@ -41,3 +41,5 @@ time = 5  # 采样时长
 t = np.linspace(0, time, time*fs)
 data = 1*np.sin(2*np.pi*f*t) + np.random.normal(0, 0.1, time*fs)
 plt_time_domain(data, fs=fs)
+
+print("hello world")
