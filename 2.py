@@ -139,7 +139,7 @@ while i < len(str1):
 随机取一个元素：element = set.pop(),随机取出一个元素放一个变量中
 清空集合：set.clear()
 取2个集合差集:set1.difference(set2),取出来集合1而集合2没有的元素构成一个新集合.
-消除2个集合的差集：set1.defference_update(set2),在集合1内。删除和集合2相同的元素。注意！集合1会变化，集合2不变的。
+消除2个集合的差集：set1.difference_update(set2),在集合1内。删除和集合2相同的元素。注意！集合1会变化，集合2不变的。
 集合合并：set1.union(set2),把set2放大set1后面，去重
 统计集合元素数量：len(set),统计的是去重后的数量
 集合遍历：不支持下标索引，所以不能用while循环。但是可以用for循环。
